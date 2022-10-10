@@ -9,9 +9,10 @@
  * Return: NULL on faliure
 */
 
-char *str_concat(char *s1, char *s2){
+char *str_concat(char *s1, char *s2)
+{
 char *s;
-unsigned int i=0 , x=0, y=0, z=0;
+unsigned int i = 0 , x = 0, y = 0, z = 0;
 while(s1[i] != '\0')
 {
 i++;
