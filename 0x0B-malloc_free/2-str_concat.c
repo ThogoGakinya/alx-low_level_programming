@@ -12,12 +12,12 @@
 char *str_concat(char *s1, char *s2)
 {
 char *s;
-unsigned int i = 0 , x = 0, y = 0, z = 0;
-while(s1[i] != '\0')
+unsigned int i = 0, x = 0, y = 0, z = 0;
+while (s1[i] != '\0')
 {
 i++;
 }
-while(s2[x] != '\0')
+while (s2[x] != '\0')
 {
 x++;
 }
@@ -28,12 +28,12 @@ if (s == NULL)
 {
 return (NULL);
 }
-while(s1[y] != '\0')
+while (s1[y] != '\0')
 {
 s[y] = s1[y];
 y++;
 }
-while(s2[z] != '\0')
+while (s2[z] != '\0')
 {
 s[y] = s2[z];
 y++;
