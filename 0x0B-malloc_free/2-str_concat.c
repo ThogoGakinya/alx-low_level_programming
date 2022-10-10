@@ -10,37 +10,34 @@
 */
 
 char *str_concat(char *s1, char *s2){
-  char *s;
-  unsigned int i=0 , x=0, y=0, z=0;
-	
-  /* getting size of the two strings*/
+char *s;
+unsigned int i=0 , x=0, y=0, z=0;
+while(s1[i] != '\0')
+{
+i++;
+}
+while(s2[x] != '\0')
+{
+x++;
+}
 
-  while(s1[i] != '\0')
-  {
-    i++;
-  }
-  while(s2[x] != '\0')
-  {
-    x++;
-  }
-
-  /*getting memory size of the new concatinated string*/
-  s = malloc((i * sizeof(char))+((x * sizeof(char))+1));
-  if (s == NULL)
-  {
-    return (NULL);
-  }
-  while(s1[y] != '\0')
-  {
-    s[y] = s1[y];
-    y++;
-  }
-  while(s2[z] != '\0')
-  {
-    s[y] = s2[z];
-    y++;
-    z++;
-  }
-  s[y] = '\0';
-  return (s);
+/*getting memory size of the new concatinated string*/
+s = malloc((i * sizeof(char))+((x +1 * sizeof(char))));
+if (s == NULL)
+{
+return (NULL);
+}
+while(s1[y] != '\0')
+{
+s[y] = s1[y];
+y++;
+}
+while(s2[z] != '\0')
+{
+s[y] = s2[z];
+y++;
+z++;
+}
+s[y] = '\0';
+return (s);
 }
