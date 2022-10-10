@@ -23,7 +23,7 @@ x++;
 }
 
 /*getting memory size of the new concatinated string*/
-s = malloc((i * sizeof(char))+((x +1 * sizeof(char))));
+s = malloc((i *sizeof(char)) + ((x + 1 *sizeof(char))));
 if (s == NULL)
 {
 return (NULL);
