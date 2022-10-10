@@ -9,42 +9,38 @@
  * Return: NULL on faliure
 */
 
-char *str_concat(char *s1, char *s2)
-{
-	int a = 0, b = 0;
-	int i, j;
-	char *s;
+char *str_concat(char *s1, char *s2){
+  char *s;
+  unsigned int i=0 , x=0, y=0, z=0;
+	
+  /* getting size of the two strings*/
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
+  while(s1[i] != '\0')
+  {
+    i++;
+  }
+  while(s2[x] != '\0')
+  {
+    x++;
+  }
 
-	/*find length of str1 & str2*/
-	while (s1[a] != '\0')
-		a++;
-	while (s2[b] != '\0')
-		b++;
-
-	/*+1 for our end of string character*/
-	s = malloc((a * sizeof(char)) + ((b + 1) * sizeof(char)));
-
-	if (s == NULL)
-		return (NULL);
-
-	/*add the first string to array s*/
-	for (i = 0; s1[i] != '\0'; i++)
-		s[i] = s1[i];
-	/*add the second string to array s*/
-	for (j = 0; s2[j] != '\0'; j++)
-	{
-		s[i] = s2[j];
-		i++;
-	}
-
-	/*null terminate our new string*/
-	s[i] = '\0';
-
-	return (s);
-}
+  /*getting memory size of the new concatinated string*/
+  s = malloc((i * sizeof(char))+((x * sizeof(char))+1));
+  if (s == NULL)
+  {
+    return (NULL);
+  }
+  while(s1[y] != '\0')
+  {
+    s[y] = s1[y];
+    y++;
+  }
+  while(s2[z] != '\0')
+  {
+    s[y] = s2[z];
+    y++;
+    z++;
+  }
+  s[y] = '\0';
+  return (s);
 }
