@@ -1,36 +1,42 @@
-#include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
+
 /**
-* str_concat - Main Entry
-* @s1: input
-* @s2: input
-* Return: 0
+ * str_concat - a function that concatenates two strings.
+ *
+ * @s1: input to string 1
+ * @s2: input to string 2
+ *
+ * Return: NULL on faliure
 */
+
 char *str_concat(char *s1, char *s2)
 {
-unsigned int size1 = 0, size2 = 0;
-char *ptr, *ret;
-ptr = s1;
-if (s1)
-while (*ptr++)
-size1++;
-else
-s1 = "";
-ptr = s2;
-if (s2)
-while (*ptr++)
-size2++;
-else
-s2 = "";
-ret = malloc(size1 + size2 + 1);
-if (!ret)
+char *s;
+unsigned int i = 0, x = 0, y = 0, z = 0;
+while (s1[i] != '\0')
+{
+i++;
+}
+while (s2[x] != '\0')
+{
+x++;
+}
+s = malloc((i * sizeof(char)) + ((x + 1) * sizeof(char)));
+if (s == NULL)
+{
 return (NULL);
-ptr = ret;
-while (*s1)
-*ptr++ = *s1++;
-while (*s2)
-*ptr++ = *s2++;
-*ptr = 0;
-return (ret);
+}
+while (s1[y] != '\0')
+{
+s[y] = s1[y];
+y++;
+}
+while (s2[z] != '\0')
+{
+s[y] = s2[z];
+y++;
+z++;
+}
+s[y] = '\0';
+return (s);
 }
