@@ -1,92 +1,69 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include "main.h"
 /**
- * _isdigit - this function says if a character is a digit
- * @n: a pointer to a string.
-(* a blank line
-* Description: this function says if a character is a digit)?
-(* section header: the header of this function is holberton.h)*
-* Return: return 1 if c is a digit and 0 in other cases.
-*/
-int _isdigit(char *n)
+  * _isdigit - tells if the string consists of digits
+  * @argv: pointer to current item in argument
+  * Return: return 0 if all digits, 1 if not all digits.
+  */
+int _isdigit(char *argv)
 {
 	int i;
 
 	i = 0;
-	while (*(n + i) != '\0')
+	while (argv[i])
 	{
-		if (*(n + i) < '0' || *(n + i) > '9')
-			return (0);
+		if (argv[i] >= '0' && argv[i] <= '9')
+			i++;
+		else
+			return (1);
+	}
+	return (0);
+}
+/**
+  * _atoi - converts a string of ascii digits to the values they represent
+  * @s: pointer to the source string
+  * Return: value of digits
+  */
+int _atoi(char *s)
+{
+	int i, result;
+
+	i = result = 0;
+	while (s[i])
+	{
+		if (s[i] >= '0' && s[i] <= '9')
+		{
+			result *= 10;
+			result += (s[i] - '0');
+		}
 		i++;
 	}
-	return (1);
+	return (result);
 }
 /**
- * _strlen  - this functions prints the lenght of a string
-(* a blank line
-*@s: string to print.
-* Description: this function prints the lenght of a string?
-(* section header: the header of this function is holberton.h)*
-* Return: retunrn the lenght in int
-*/
-int _strlen(char *s)
-{
-	if (*s != '\0')
-	{
-		s++;
-		return (1 + _strlen(s));
-	}
-	else
-		return (0);
-}
-/**
- * main - the entry point
-(* a blank line
-*@argc:the number of argumentes
-*@argv: the arguments to be multiplicated
-* Description: this function multiply two numbers)?
-(* section header: the header of this function is holberton.h)*
-* Return: return 0 in success.
-*/
+  * main - main function call
+  * @argc: argument count
+  * @argv: 2D array of arguments
+  * Return: return 0 on success, 98 on failure
+  */
 int main(int argc, char *argv[])
 {
-	int p, res, len, n1, n2, i, j;
-	int *total;
+	int i;
 
-	if (argc < 3 || argc > 3 || !(_isdigit(argv[1])) || !(_isdigit(argv[2])))
-		puts("Error"), exit(98);
-	if (argv[1][0] == '0' || argv[2][0] == '0')
+	malloc();
+	if (argc != 3)
 	{
-		printf("0\n");
-		return (0);
+		printf("Error\n");
+		exit(98);
 	}
-	n1 = _strlen(argv[1]), n2 = _strlen(argv[2]);
-	len = n1 + n2;
-	total = calloc(len, sizeof(int *));
-	if (total == NULL)
-		puts("Error"), exit(98);
-	for (i = (n2 - 1); i > -1; i--)
+	for (i = 1; i < argc; i++)
 	{
-		res = 0;
-		for (j = (n1 - 1); j > -1; j--)
+		if (_isdigit(argv[i]))
 		{
-			p = (argv[2][i] - '0') * (argv[1][j] - '0');
-			res =  (p / 10);
-			total[(i + j) + 1] += (p % 10);
-			if (total[(i + j) + 1] > 9)
-			{
-				total[i + j] += total[(i + j) + 1] / 10;
-				total[(i + j) + 1] = total[(i + j) + 1] % 10;
-			}
-			total[(i + j)] += res;
+			printf("Error\n");
+			exit(98);
 		}
 	}
-	if (total[0] == 0)
-		i = 1;
-	else
-		i = 0;
-	for (; i < len; i++)
-		printf("%d", total[i]);
-	printf("\n");
-	free(total);
 	return (0);
 }
